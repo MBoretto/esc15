@@ -48,6 +48,6 @@ Steps
             sqlite3 ~/public_html/cgi-bin/data/${f}_live_peak.sql3
         done
 
-6. This results in profiles such as: `http://131.154.193.33/~<student>/cgi-bin/igprof-navigator.py/vvvi-copy.gz_tot/`.
+6. This results in profiles such as: `http://esc-gw.pd.infn.it:61100/~<student>/cgi-bin/igprof-navigator.py/vvvi-copy.gz_tot/`.
 
 
