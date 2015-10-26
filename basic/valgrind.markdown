@@ -22,3 +22,8 @@ later exercises will go into more detail.
 3. The compiler can sometimes warn us about the same thing:
 
         c++ -std=c++14 -g -Wall -Wextra -o memerror memerror.cc
+
+4. Address sanitizer can also help you:
+
+        c++ -std=c++14 -fsanitize=address -g -Wall -Wextra -o memerror memerror.cc
+        ./memerror       
