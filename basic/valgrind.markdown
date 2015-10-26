@@ -19,9 +19,6 @@ later exercises will go into more detail.
 
         valgrind ./memerror
 
-3. Try enabling the optimization (`-O`) and see if there is an effect
-   on the valgrind analysis.
-
-4. The compiler can sometimes warn us about the same thing:
+3. The compiler can sometimes warn us about the same thing:
 
         c++ -std=c++14 -g -Wall -Wextra -o memerror memerror.cc
