@@ -119,6 +119,7 @@ when logging into esc-gw.
 	scp studentNM@esc-gw.pd.infn.it:.ssh/id_rsa.pub esc_ssh
 	chmod 600 esc_ssh/id_rsa
 	cat >> .ssh/config <<EOF
+	
 	Host esc-gw
 	HostName esc-gw.pd.infn.it
 	User studentNM
