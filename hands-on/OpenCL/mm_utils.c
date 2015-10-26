@@ -3,6 +3,7 @@
 // generators for my matrix multiplication test bed.
 //
 #include "mm_utils.h"
+#include <stdlib.h>
 
 //
 // Compare two matrices ... return the sum of the squares 
