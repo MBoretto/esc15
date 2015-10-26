@@ -35,6 +35,7 @@
 #include "mm_utils.h"   //a library of basic matrix utilities functions
                         //and some key constants used in this program 
                         //(such as TYPE)
+#include <stdlib.h>
 
 #define TOLERANCE 0.001
 #define DEF_SIZE  1000
