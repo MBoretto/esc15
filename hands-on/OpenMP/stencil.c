@@ -22,9 +22,7 @@ HISTORY: This program is based on the stencil program from the Parallel
 **********************************************************************************/
 
 #include <stdio.h>
-#ifdef APPLE
 #include <stdlib.h>
-#endif
 #include <sys/time.h>
 #define  USEC_TO_SEC  1.0e-6    /* to convert microsecs to secs */
 

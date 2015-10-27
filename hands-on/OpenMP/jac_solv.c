@@ -31,6 +31,7 @@
 */
 
 #include<omp.h>
+#include <stdlib.h>
 #include<math.h>
 #include "mm_utils.h"   //a library of basic matrix utilities functions
                         //and some key constants used in this program 
