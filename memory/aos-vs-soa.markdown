@@ -26,41 +26,21 @@ Copy and paste to a file and compile the following two programs:
       return 0;
     }
 
-and:
 
-    #include <vector>
-    #define NUM_ITEMS 10000000
-
-    struct A {
-      std::vector<double> x;
-      std::vector<double> y;
-      std::vector<double> z;
-      std::vector<double> w;
-      A() : x(NUM_ITEMS), y(NUM_ITEMS), z(NUM_ITEMS), w(NUM_ITEMS) {}
-    };
-
-    int main (int argc, char **argv)
-    {
-      A mySoA;
-      for (int i = 0; i < 10; ++i)
-        for (auto &w : mySoA.w)
-          w = 1.0;
-      return 0;
-    }
-
-we will call them `aos.cc` and `soa.cc`.
+we will call them `aos.cc`.
 
     c++ -O3 -std=c++14 -o aos aos.cc
-    c++ -O3 -std=c++14 -o soa soa.cc
 
-1. Which one is faster?
+1. Convert the AoS to SoA.
 
-2. How many bytes are written in the AoS case? How many in the SoA case?
+2. Which one is faster?
 
-3. How many cache-lines are touched in the AoS case? How many in the
+3. How many bytes are written in the AoS case? How many in the SoA case?
+
+4. How many cache-lines are touched in the AoS case? How many in the
    SoA case?
 
-4. How many memory pages?
+5. How many memory pages?
 
-5. What happens to the performance of the two examples if you add a virtual
+6. What happens to the performance of the two examples if you add a virtual
    destructor to A? Why?
