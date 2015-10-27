@@ -43,7 +43,6 @@ float pi<float32x4_t>(int num_steps) {
 #include<iostream>
 #include <chrono>
 
-
 template<typename T>
 void go(int num_steps) {
   auto start = std::chrono::high_resolution_clock::now();
@@ -51,9 +50,6 @@ void go(int num_steps) {
   auto total_time = std::chrono::high_resolution_clock::now() -start;
   std::cout << "pi = " << res << " in " << total_time.count() << std::endl;
 }
-
-
-	 
 
 int main ()
 {
