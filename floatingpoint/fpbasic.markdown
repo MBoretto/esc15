@@ -1,6 +1,7 @@
 ---
 title: floating point representation
 layout: main
+section: floatingpoint
 ---
 
 In this exercises you will familiarize with basic proprerties of floating point represantation

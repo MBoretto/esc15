@@ -1,6 +1,7 @@
 ---
 title: quadratic equation solver
 layout: main
+section: floatingpoint
 ---
 
 In this exercises you will experiment catastrofic cancellations and verify the accuracy of the solution of a quadratic equation
@@ -71,3 +72,4 @@ In this exercises you will experiment catastrofic cancellations and verify the a
 
          // print(x1-(xm+std::get<1>(solution)));
        }
+
