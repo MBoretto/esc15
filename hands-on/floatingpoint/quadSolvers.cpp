@@ -13,7 +13,7 @@ inline std::tuple<T,T> quadSolverNaive(T a, T b, T c) {
   // solve equation ax^2 + 2bx + c= 0
   // using naive solution (as at college)
   auto d = -T(1)/a;
-  return std::make_tuple(d*(b+det(a,b,c)),d*(b-det(a,b,c)));  
+  return std::make_tuple(d*(b-det(a,b,c)),d*(b+det(a,b,c)));  
 }
 
 
@@ -55,8 +55,8 @@ void circle() {
   std::cout <<' '<< std::endl;
 
   constexpr T micron = 1.e-3;
-  constexpr T one = 1000.;
-  constexpr T halfChord = one/2;
+  constexpr T meter = 1000.;
+  constexpr T halfChord = meter/2;
 
   
   T x1 = std::sqrt(77.);
@@ -76,9 +76,16 @@ void circle() {
     std::cout << "r^2-h^2 "; print(radius*radius-halfChord*halfChord);
 
     print(x0-std::sqrt(radius*radius-halfChord*halfChord));
+    std::cout <<"naive circle ";
     print(x1-(x0-std::sqrt(radius*radius-halfChord*halfChord)));
+
+    
+    std::cout <<"opt circle and naive solution ";
+    auto sn = quadSolverNaive(T(1),-radius,halfChord*halfChord);
+    print(x1-(xm+std::get<1>(sn)));
     auto s1 = quadSolverOpt(T(1),-radius, halfChord*halfChord);
     print(xm+std::get<1>(s1));
+    std::cout <<"opt circle and solution ";
     print(x1-(xm+std::get<1>(s1)));
     
     std::cout << std::endl;
@@ -94,7 +101,9 @@ int main(){
   go<double>();
   // go<__float128>();
 
+  std::cout << "\nfloat\n" << std::endl;
   circle<float>();
+  std::cout << "\ndouble\n" << std::endl;
   circle<double>();
 
   
