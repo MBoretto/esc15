@@ -9,29 +9,24 @@ In this exercises you will familiarize with basic proprerties of floating point 
 2. extract the exponent of a float
 3. produce NaN and inf, verify the value of their exponent
 
-{% highlight bash %}
-    #include<iostream>
-    #include<iomanip>
-    #include<cmath>
-    #include<limits>
-    #include<cstdio>
-    #include<cstring>
-    
-    int count(float x, float e) {
-           // fill in
-    } 
-    int exponent(float x) {
-           // fill in
-    }
+       #include<iostream>
+       #include<iomanip>
+       #include<cmath>
+       #include<limits>
+       #include<cstdio>
+       #include<cstring>
+       
+       int count(float x, float e) {
+              // fill in
+       } 
+       int exponent(float x) {
+              // fill in
+       }
 
-    int main() {
+       int main() {
 
-      std::cout << count(.1f,1.f) << std::endl;
-      std::cout << count(2.f,3.f) << std::endl;
-      return 0;
+         std::cout << count(.1f,1.f) << std::endl;
+         std::cout << count(2.f,3.f) << std::endl;
+         return 0;
 
-    }
-{% endhighlight %}
-
-
- 
+       }
