@@ -9,7 +9,7 @@ In this exercises you will familiarize with basic proprerties of floating point 
 2. extract the exponent of a float
 3. produce NaN and inf, verify the value of their exponent
 
-
+{% highlight bash %}
     #include<iostream>
     #include<iomanip>
     #include<cmath>
@@ -31,7 +31,7 @@ In this exercises you will familiarize with basic proprerties of floating point 
       return 0;
 
     }
-
+{% endhighlight %}
 
 
  
