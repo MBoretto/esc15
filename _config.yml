@@ -58,6 +58,12 @@ menu:
       label: Zero Pages
     - name: aos-vs-soa
       label: AoS vs SoA
+  - 
+    name: floatingpoint
+    label: FLOATING POINT
+    items:
+    - name: fpbasic
+      label: Basic
 
 
 defaults: 
