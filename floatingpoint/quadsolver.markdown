@@ -65,9 +65,9 @@ In this exercises you will experiment catastrofic cancellations and verify the a
           auto yt=halfChord;
           // compute xm, radius and x0
 	  
-	  // recompute xt
-	  // y0 = 0
-
+          // recompute xt
+          // y0 = 0
+          
           // naive circle eq. (x-x0)^2 +(yt-y0)^2 = r^2 ->  x = x0 - sqrt(r^2-yt^2)
           // print(xt-x);  // compare solution with actual value to get the accuracy
 
@@ -78,11 +78,11 @@ In this exercises you will experiment catastrofic cancellations and verify the a
         }
 
         int main() {
-
+          
           std::cout << "\nfloat\n" << std::endl;
           circle<float>();
           std::cout << "\ndouble\n" << std::endl;
-	  circle<double>();
- 
+          circle<double>();
+          
           return 0;
         }
