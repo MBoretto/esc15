@@ -72,8 +72,8 @@ In this exercises you will experiment catastrofic cancellations and verify the a
           // print(xt-x);  // compare solution with actual value to get the accuracy
 
           // circle w/r/t local point (x-xm)^2 + (y-ym)^2  -2ar(x-xm) -2br(y-ym) = 0 ->
-	  // (x-xm)^2  - 2(x-xm)r + yt^2  = 0  -> x = xm + ....
-
+          // (x-xm)^2  - 2(x-xm)r + yt^2  = 0  -> x = xm + ....
+          
           // print(xt-(xm+std::get<1>(solution)));  // compare solution with actual value to get the accuracy
         }
 
