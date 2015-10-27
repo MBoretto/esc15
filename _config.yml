@@ -65,7 +65,7 @@ menu:
     - name: fpbasic
       label: Basic
     - name: quadsolver
-    - label: Second Order Equation
+      label: Second Order Equation
 
 defaults: 
   -
