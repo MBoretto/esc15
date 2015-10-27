@@ -66,6 +66,12 @@ menu:
       label: Basic
     - name: quadsolver
       label: Second Order Equation
+  -
+    name: vectorization
+    label: VECTORIZATION
+    items:
+    - name: pi
+      label: Vectorize computation of pi
 
 defaults: 
   -
