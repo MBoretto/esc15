@@ -34,14 +34,18 @@ class String {
   }
   String& operator=(String const& other)
   {
+    // use the copy-and-swap idiom. Not terribly efficient but safe and doesn't
+    // require a self-assignment test
     String tmp(other);
     std::swap(s_, tmp.s_);
     return *this;
   }
   String& operator=(String&& tmp)
   {
-    s_ = tmp.s_;
-    tmp.s_ = nullptr;
+    // do not check for self-assignment. situations like
+    // x = std::move(x)
+    // are rare
+    std::swap(s_, tmp.s_);
     return *this;
   }
   size_t size() const
