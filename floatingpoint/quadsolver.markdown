@@ -68,7 +68,7 @@ In this exercises you will experiment catastrofic cancellations and verify the a
           // recompute xt
           // y0 = 0
           
-          // naive circle eq. (x-x0)^2 +(yt-y0)^2 = r^2 ->  x = x0 - sqrt(r^2-yt^2)
+          // standard circle eq. (x-x0)^2 +(yt-y0)^2 = r^2 ->  x = x0 - sqrt(r^2-yt^2)
           // print(xt-x);  // compare solution with actual value to get the accuracy
 
           // circle w/r/t local point (x-xm)^2 + (y-ym)^2  -2ar(x-xm) -2br(y-ym) = 0 ->
