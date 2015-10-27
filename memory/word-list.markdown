@@ -18,7 +18,7 @@ such as `top`, `ps`, `pmap` and `pstack`, and profiling and debugging tools
 
 2. Go to the exercise directory:
 
-        cd esc15/exercises/memory
+        cd esc15/hands-on/memory
 
 3. Make yourself a test dataset of 16 random 30'000-word files:
 
