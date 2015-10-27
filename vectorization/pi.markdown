@@ -54,7 +54,7 @@ In this exercises you will vectorize the computation of pi using the arc integra
 
 2. compile with
         c++ -O2 pi.cpp  -fopt-info-vec -march=native
-3. compile with ``-Ofast`` (try also -funroll-loops)
+3. compile with ``-Ofast`` (try also -funroll-loops) (why O3 will not vectorize?)
 4. try to vectorize it by yourself using native-vectors
 
         typedef float __attribute__( ( vector_size( 16 ) ) ) float32x4_t;
