@@ -5,15 +5,17 @@
 #include <x86intrin.h>
 
 
-// c++ -Ofast -fopenmp pi.cpp  -fopt-info-vec -march=native
+// c++ -Ofast pi.cpp  -fopt-info-vec -march=native
 
 typedef float __attribute__( ( vector_size( 16 ) ) ) float32x4_t;
 constexpr float32x4_t zero4= {0.f,0.f,0.f,0.f};
 
 template<typename Float>
 float pi(int num_steps) {
+  if(num_steps <=0) __builtin_unreachable();
   Float step =  Float(1.0)/(Float) num_steps;
   Float sum = 0;
+  // num_steps = 4*(num_steps/4);  // make sure is a multiple of 4
   for (int i=0;i< num_steps; i++){
     auto x = (Float(i)+Float(0.5))*step;
     sum += Float(4.0)/(Float(1.0)+x*x);
@@ -24,9 +26,11 @@ float pi(int num_steps) {
 
 template<>
 float pi<float32x4_t>(int num_steps) {
+  if(num_steps <=0) __builtin_unreachable();
   constexpr float32x4_t incr{0.5f,1.5f,2.5f,3.5f};
   using Float = float;
-  Float step =  Float(1.0)/(Float) num_steps;
+  num_steps = 4*(num_steps/4);  // make sure is a multiple of 4
+  Float step =  Float(1.0)/(Float)num_steps;
   float32x4_t sum = zero4;
   for (int i=0;i< num_steps; i+=4){
     auto x = (incr+Float(i))*step;
