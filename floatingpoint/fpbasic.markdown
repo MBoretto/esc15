@@ -19,19 +19,19 @@ In this exercises you will familiarize with basic proprerties of floating point 
     
     int count(float x, float e) {
            // fill in
-     } 
+    } 
     int exponent(float x) {
+           // fill in
+    }
+
+    int main() {
+
+      std::cout << count(.1f,1.f) << std::endl;
+      std::cout << count(2.f,3.f) << std::endl;
+      return 0;
 
     }
 
-
-     int main() {
-
-       std::cout << count(.1f,1.f) << std::endl;
-       std::cout << count(2.f,3.f) << std::endl;
-       return 0;
-
-     }
 
 
  
