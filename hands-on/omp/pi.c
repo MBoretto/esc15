@@ -21,9 +21,7 @@ static long num_steps = 100000000;
 double step;
 int main (int argc, char *argv[])
 {
-
       std::string s(argv[1]);
-
       int const build_n_threads = atoi(s.c_str());
 
 	  double pi, sum = 0.0;
@@ -35,14 +33,11 @@ int main (int argc, char *argv[])
 	  step = 1.0/(double) num_steps;
 
       omp_set_num_threads(build_n_threads);
-
 	  start_time = omp_get_wtime();
-
       #pragma omp parallel
       {
-
           int ID = omp_get_thread_num();
-          std::cout<<"ID "<<ID<<'\n';
+          //std::cout<<"ID "<<ID<<'\n';
           int n_threads = omp_get_num_threads();
           if(ID == 0) shared_n_threads = n_threads;
 

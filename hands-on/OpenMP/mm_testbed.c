@@ -38,6 +38,8 @@
 //  matrix multiplication test cases
 void mm_ijk (int Ndim, int Mdim, int Pdim, TYPE *A, TYPE *B, TYPE *C);
 
+void mm_ijk_marco (int Ndim, int Mdim, int Pdim, TYPE *A, TYPE *B, TYPE *C);
+
 int main(int argc, char **argv)
 {
    int Ndim, Mdim, Pdim;   /* A[N][P], B[P][M], C[N][M] */
@@ -70,4 +72,7 @@ int main(int argc, char **argv)
    printf(" triple loop, ijk case %d %d %d\n", Ndim, Mdim, Pdim);
    mm_tst_cases(NTRIALS, Ndim, Mdim, Pdim, A, B, C, &mm_ijk);
 
+   printf("\n==================================================\n");
+   printf(" triple loop, ijk case %d %d %d\n", Ndim, Mdim, Pdim);
+   mm_tst_cases(NTRIALS, Ndim, Mdim, Pdim, A, B, C, &mm_ijk_marco);
 }

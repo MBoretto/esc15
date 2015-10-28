@@ -16,11 +16,8 @@
 #include <stdlib.h>
 #include <math.h>
 #include <omp.h>
-
 # define NPOINTS 1000
 # define MAXITER 1000
-
-void testpoint(void);
 
 struct d_complex{
    double r;
@@ -30,26 +27,27 @@ struct d_complex{
 struct d_complex c;
 int numoutside = 0;
 
+int testpoint(struct d_complex);
+
 int main(){
    int i, j;
    double area, error, eps  = 1.0e-5;
 
-
 //   Loop over grid of points in the complex plane which contains the Mandelbrot set,
 //   testing each point to see whether it is inside or outside the set.
 
-#pragma omp parallel for default(shared) private(c,eps)
-   for (i=0; i<NPOINTS; i++) {
-     for (j=0; j<NPOINTS; j++) {
-       c.r = -2.0+2.5*(double)(i)/(double)(NPOINTS)+eps;
-       c.i = 1.125*(double)(j)/(double)(NPOINTS)+eps;
-       testpoint();
-     }
-   }
+   #pragma omp parallel for private(c) reduction(+:numoutside) collapse(2) 
+      for (i=0; i<NPOINTS; i++) {
+        for (j=0; j<NPOINTS; j++) {
+          c.r = -2.0+2.5*(double)(i)/(double)(NPOINTS)+eps;
+          c.i = 1.125*(double)(j)/(double)(NPOINTS)+eps;
+          numoutside += testpoint(c);
+        }
+      }
 
-// Calculate area of set and error estimate and output the results
+   // Calculate area of set and error estimate and output the results
    
-area=2.0*2.5*1.125*(double)(NPOINTS*NPOINTS-numoutside)/(double)(NPOINTS*NPOINTS);
+   area=2.0*2.5*1.125*(double)(NPOINTS*NPOINTS-numoutside)/(double)(NPOINTS*NPOINTS);
    error=area/(double)NPOINTS;
 
    printf("Area of Mandlebrot set = %12.8f +/- %12.8f\n",area,error);
@@ -57,8 +55,7 @@ area=2.0*2.5*1.125*(double)(NPOINTS*NPOINTS-numoutside)/(double)(NPOINTS*NPOINTS
 
 }
 
-void testpoint(void){
-
+int testpoint( struct d_complex c){
 // Does the iteration z=z*z+c, until |z| > 2 when point is known to be outside set
 // If loop count reaches MAXITER, point is considered to be inside the set
 
@@ -72,10 +69,11 @@ void testpoint(void){
          z.i = z.r*z.i*2+c.i;
          z.r = temp;
          if ((z.r*z.r+z.i*z.i)>4.0) {
-           numoutside++;
+           //numoutside++;
+           return 1;
            break;
          }
        }
-
+   return 0;
 }
 

@@ -7,29 +7,30 @@
 class String {
   char* s_; // nullptr or null-terminated
  public:
-  String(): s_(nullptr) {}
-
-  //Construnctor
-  String(char const* s) {
+  //Destructor
+  ~String() { delete [] s_; }//Delete s1;
+  //Construntor empty
+  String(): s_(nullptr) {}//String s1;
+  //Constructor param
+  String(char const* s) { //String s1("blabla");
     size_t size = strlen(s) + 1;
     s_ = new char[size];
     memcpy(s_, s, size);
   }
-  //Destructor
-  ~String() { delete [] s_; }
   //Copy constructor
-  String(String const& other) {
+  String(String const& other) { //String s1(s2);
     size_t size = strlen(other.s_) + 1;
     s_ = new char[size];
     memcpy(s_, other.s_, size);
   }
-  //Move Constructor
-  String(String&& tmp)
+  //Move constructor 
+  String(String&& tmp)//String s1(get_string());
+                      //String s1(std::Move(s2));
       : s_(tmp.s_) {
     tmp.s_ = nullptr;
   }
-  //assingment by reference constructor
-  String& operator=(String const& other)
+  //Copy assigment constructor
+  String& operator=(String const& other) // String s1=s2;
   {
     // implemented
     size_t size = strlen(other.s_) + 1;
@@ -40,8 +41,8 @@ class String {
     //std::swap(s_, tmp.s_);
     //return *this;
   }
-  //Move assigmenr by reference constructor
-  String& operator=(String&& other)
+  //Move assigment constructor
+  String& operator=(String&& other)//String s1=get_string();
   {
     // implemented
      other.s_ = nullptr;
@@ -65,10 +66,6 @@ class String {
   }
 };
 
-String get_string()
-{
-  return String{"Consectetur adipiscing elit"};
-}
 
 int main()
 {
@@ -91,4 +88,9 @@ int main()
 
   std::cout << s5.c_str() << '\n';
   std::cout << s3.c_str() << '\n';
+}
+
+String get_string()
+{
+  return String{"Consectetur adipiscing elit"};
 }
