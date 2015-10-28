@@ -7,6 +7,7 @@
 #include<cmath>
 #include<limits>
 #include<cstdio>
+#include<cstring>
 
 template<typename T> 
 void print(T x) {
@@ -25,5 +26,8 @@ int main () {
   std::cout << "precision: " << std::numeric_limits<float>::epsilon() << '\n';
   print(std::numeric_limits<float>::epsilon());
   print(0.1f);
+  int i; const float x=0.1f;
+  memcpy(&i,&x,sizeof(int));
+  std::cout << i << std::endl;
   return 0;
 }

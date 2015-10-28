@@ -9,6 +9,7 @@
 
 //#define DEBUG    1
 #include "mm_utils.h"
+#include <stdlib.h>
 
 void mm_tst_cases(int NTRIALS, int Ndim, int Mdim, int Pdim, 
               TYPE* A, TYPE* B, TYPE* C, 

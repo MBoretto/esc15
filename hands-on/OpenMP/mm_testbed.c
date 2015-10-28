@@ -28,6 +28,7 @@
 **
 **  HISTORY: Written by Tim Mattson, Feb 2013
 */
+#include <stdlib.h>
 #include "mm_utils.h"
 #define SIZE 400
 #define NTRIALS 5
