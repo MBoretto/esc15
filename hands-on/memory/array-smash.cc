@@ -17,10 +17,11 @@ void init(std::vector<mytest *> &t)
 
 void fill(std::vector<mytest *> &t)
 {
-  for (int n = 0; n <= 10; ++n)
+  for (int n = 0; n < 10; ++n)
   {
     t[n]->d.resize(63, 0);
-    for (int i = 0; i <= 63; ++i)
+    //for (int i = 0; i <= 63; ++i)
+    for (int i = 0; i < 63; ++i)
       t[n]->d[i] = sin(M_PI / 10. * i);
   }
 }
@@ -28,8 +29,8 @@ void fill(std::vector<mytest *> &t)
 double sum(std::vector<mytest *> &t)
 {
   double sum = 0;
-  for (int n = 0; n <= 10; ++n)
-    for (int i = 0; i <= 63; ++i)
+  for (int n = 0; n < 10; ++n)
+    for (int i = 0; i < 63; ++i)
       sum += t[n]->d[i];
   return sum;
 }

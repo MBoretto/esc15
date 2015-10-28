@@ -9,7 +9,9 @@ int g(char *buf)
 
 void f()
 {
-  char buf[10];
+//  char buf[10];
+
+  char buf[50];
   int len = g(buf);
   printf("buf = '%s', len = %d", buf, len);
 }
