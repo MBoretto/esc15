@@ -5,8 +5,8 @@
 #endif
 #define AVAL    3.0
 #define BVAL    5.0
-//#define TYPE    double
-#define TYPE    float
+#define TYPE    double
+//#define TYPE    float
 #define BIG     10000000.0
 #define SMALL   0.00000001
 #define TOL     0.001

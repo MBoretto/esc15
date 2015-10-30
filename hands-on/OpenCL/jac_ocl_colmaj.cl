@@ -5,6 +5,8 @@
 #pragma OPENCL EXTENSION cl_khr_fp64 : enable
 #endif
 
+
+
 kernel void jacobi(
   const unsigned Ndim,
   global TYPE * A,
@@ -30,21 +32,29 @@ kernel void jacobi(
 
 
 
-//C code
-//     iters++;
-//     xtmp  = xnew;   // don't copy arrays.
-//     xnew  = xold;   // just swap pointers.
-//     xold  = xtmp;
+//kernel void jacobi(
+//  const unsigned Ndim,
+//  global TYPE * A,
+//  global TYPE * b,
+//  global TYPE * xold,
+//  global TYPE * xnew)
+//{
 //
-//     for (i=0; i<Ndim; i++){
-//         xnew[i] = (TYPE) 0.0;
-//         for (j=0; j<Ndim;j++){
-//             if(i!=j)
-//               xnew[i]+= A[i*Ndim + j]*xold[j];
-//         }
-//         xnew[i] = (b[i]-xnew[i])/A[i*Ndim+i];
+//  // Fill in the kernel program based on the provided
+//  // serial program
 //
-//     }
+//  int i = get_global_id(0); 
+//  int j;
+//
+//  xnew[i] = (TYPE) 0.0;
+//  for (j=0; j<Ndim; j++){
+//      if(i!=j)
+//        xnew[i]+= A[i*Ndim + j]*xold[j];
+//  }
+//  xnew[i] = (b[i]-xnew[i])/A[i*Ndim+i];
+//
+//}
+
 
 
 

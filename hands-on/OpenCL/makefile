@@ -7,19 +7,42 @@
 # verify that you are including the right make.def file for the platform
 include make.def
 
-EXES     = jac_solv$(EXE) vadd$(EXE)
+EXES     = jac_solv$(EXE) vadd$(EXE) jac_solv_ocl_basic$(EXE) jac_solv_ocl_colmaj$(EXE)
 
 JAC_OBJS  = jac_solv.$(OBJ) mm_utils.$(OBJ)
 
 VADD_OCL_OBJS  = vadd.$(OBJ)
 
+JAC_OCL_OBJS  = jac_solv_ocl_basic.$(OBJ) mm_utils.$(OBJ)
+
+JAC_OCL_COLMAJ_OBJS  = jac_solv_ocl_colmaj.$(OBJ) mm_utils.$(OBJ)
+
 all: $(EXES)
 
 jac_solv$(EXE): $(JAC_OBJS) mm_utils.h
-	$(CLINKER) $(CFLAGS) -o jac_solv$(EXE) $(JAC_OBJS) $(LIBS)
+	$(CLINKER) $(CFLAGS) -o jac_solv$(EXE) $(JAC_OBJS) $(LIBS)  
+
+jac_solv$(EXE): $(JAC_OBJS) mm_utils.h
+	$(CLINKER) $(CFLAGS) -o jac_solv$(EXE) $(JAC_OBJS) $(LIBS)  
 
 vadd$(EXE): $(VADD_OCL_OBJS)
 	$(CLINKER) $(CFLAGS) -o vadd$(EXE) $(VADD_OCL_OBJS) $(LIBS) $(OCL_LIBS)
+
+
+
+
+
+
+jac_solv_ocl_basic$(EXE): $(JAC_OCL_OBJS)
+	$(CLINKER) $(CFLAGS) -o jac_solv_ocl_basic$(EXE) $(JAC_OCL_OBJS) $(LIBS) $(OCL_LIBS)
+
+jac_solv_ocl_colmaj$(EXE): $(JAC_OCL_COLMAJ_OBJS)
+	$(CLINKER) $(CFLAGS) -o jac_solv_ocl_colmaj$(EXE) $(JAC_OCL_COLMAJ_OBJS) $(LIBS) $(OCL_LIBS)
+
+
+
+
+
 
 test: $(EXES)
 	for i in $(EXES); do \
