@@ -32,8 +32,12 @@ static long MULTIPLIER  = 1366;
 static long ADDEND      = 150889;
 static long PMOD        = 714025;
 long random_last = 0;
+#pragma omp threadprivate(random_last)
 double random_low, random_hi;
 
+
+    double ret_val;
+//#pragma omp threadprivate(ret_val)
 double drandom()
 {
     long random_next;
@@ -49,7 +53,7 @@ double drandom()
 // shift into preset range
 //
     ret_val = ((double)random_next/(double)PMOD)*(random_hi-random_low)+random_low;
-    return ret_val;
+    return (ret_val);
 }
 //
 // set the seed and the range

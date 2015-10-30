@@ -94,19 +94,44 @@ static long num_trials = 100000000;
 int main ()
 {
    long i;  long Ncirc = 0;
-   double pi, x, y, test;
+   double pi, x, y;
    double r = 1.0;   // radius of circle. Side of squrare is 2*r 
 
    seed(-r, r);  // The circle and square are centered at the origin
    double time = omp_get_wtime();
-   for(i=0;i<num_trials; i++)
-   {
-      x = drandom(); 
-      y = drandom();
+   //#pragma omp parallel for private(x,y) reduction(+:Ncirc)
 
-      test = x*x + y*y;
 
-      if (test <= r*r) Ncirc++;
+//   #pragma omp parallel
+//   {
+//       #pragma omp master
+//       {
+//           for(i=0;i<num_trials; i++)
+//           {
+//              x = drandom(); 
+//              y = drandom();
+//              #pragma omp task firstprivate(x,y) //reduction(+:Ncric)
+//              {
+//                test = x*x + y*y;
+//                if (test <= r*r) Ncirc++;
+//              }
+//           }
+//       }
+//   }
+
+
+    #pragma omp parallel
+    {
+        int id = omp_get_thread_num(); 
+        
+        #pragma omp for reduction(+:Ncirc) private(x,y)
+        for(i=0;i<num_trials; i++)
+        {
+           x = drandom(); 
+           y = drandom();
+           double test = x*x + y*y;
+           if (test <= r*r) Ncirc++;
+        }
     }
 
     pi = 4.0 * ((double)Ncirc/(double)num_trials);
